@@ -3,7 +3,7 @@
 > A portable AI skill that acts as a business consultant for owners and founders, adapted to the type of business you run.
 
 ![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)
-![Version](https://img.shields.io/badge/version-1.2.0-blue.svg)
+![Version](https://img.shields.io/badge/version-1.3.0-blue.svg)
 
 Business Advisor is a set of instructions, reference files and fill-in templates (the `SKILL.md` format) that a compatible AI assistant or agent can load to give better business advice. It is plain Markdown and text, so it also works as a manual knowledge base for any AI model.
 
