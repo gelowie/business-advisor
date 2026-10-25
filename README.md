@@ -3,7 +3,7 @@
 > A portable AI skill that acts as a business consultant for owners and founders, adapted to the type of business you run.
 
 ![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)
-![Version](https://img.shields.io/badge/version-1.1.0-blue.svg)
+![Version](https://img.shields.io/badge/version-1.2.0-blue.svg)
 
 Business Advisor is a set of instructions, reference files and fill-in templates (the `SKILL.md` format) that a compatible AI assistant or agent can load to give better business advice. It is plain Markdown and text, so it also works as a manual knowledge base for any AI model.
 
@@ -43,8 +43,9 @@ The skill is a folder with `SKILL.md` at its top level.
 │   ├── base-layer.md     Operating contract for every template
 │   ├── index.md          Template map
 │   └── style.md          Tone and formatting
-└── tools/                File-handling guidance (PDF, documents, presentations,
-                          spreadsheets, data files, web documents)
+├── tools/                File-handling guidance (PDF, documents, presentations,
+│                         spreadsheets, data files, web documents)
+└── scripts/verify-links.sh   Checks that relative Markdown links resolve
 ```
 
 ## Example prompts
