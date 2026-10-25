@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.2.0] - 2026-09-17 - Version-agnostic tools and references
+
+### Added
+- `scripts/verify-links.sh` to check that relative Markdown links resolve.
+
+### Changed
+- 12 files in `tools/` and `references/index.md` reworded so they work with this version alone or with a deeper layer installed.
+
 ## [1.1.0] - 2026-09-14 - Base layer and tools
 
 ### Added
