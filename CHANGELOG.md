@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.3.0] - 2026-09-17 - Wording fix
+
+### Fixed
+- Three one-line corrections in `tools/pdf/Fill Form.md`, `tools/presentations/Presentations.md` and `tools/spreadsheets/Spreadsheets.md`.
+
 ## [1.2.0] - 2026-09-17 - Version-agnostic tools and references
 
 ### Added
