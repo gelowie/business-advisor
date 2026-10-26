@@ -1,5 +1,19 @@
 # Changelog
 
+## [2.1.0] - 2026-09-14 - Structured v2 layer
+
+### Added
+- `assets/routing.md`, `assets/selection.md`, `assets/templates2/index.md` and `assets/templates2/moderate-layer.md`.
+- v2 methodologies in domain folders under `assets/templates2/`, including four new ones: Cash Flow Crisis Diagnosis, Stalled Growth Diagnosis, Draft-First Strategy Validation and Strategic Drift Diagnosis.
+- The template base layer, index and style files, `references/index.md` and `tools/` return.
+
+### Changed
+- The 20 templates are Markdown (`.md`) again.
+- The plugin-style `assets/template2/` layout is replaced by `assets/templates2/`, organized by domain.
+
+### Removed
+- `assets/template2/orchestration.md` and the `learn` and `brainstorm` groups.
+
 ## [2.0.0] - 2026-09 (approx.) - First v2 build
 
 ### Added
