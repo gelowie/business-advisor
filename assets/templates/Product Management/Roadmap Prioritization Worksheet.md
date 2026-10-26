@@ -1,0 +1,36 @@
+# Roadmap Prioritization Worksheet
+
+## Summary
+
+Scores and ranks a list of features or initiatives using RICE or ICE, so priority is decided by data rather than by whoever asked loudest.
+
+## Inputs
+
+- **Candidate initiatives** — [list them, with a one-line description each]
+- **Available data** — [usage numbers, customer requests, revenue by segment — whatever exists]
+- **Team capacity** — [rough size or velocity, so effort estimates stay grounded]
+- **Current strategic focus** — [if there's a stated priority theme]
+
+## Deliverable
+
+1. A score for each item using RICE (Reach × Impact × Confidence ÷ Effort) or ICE if usage data is thin — state which was used and why
+2. A ranked list by score
+3. A sanity check of the top three against the stated strategic focus, flagging any mismatch
+4. Grouping of the remaining items into Now, Next, and Later
+5. A note on any low-scoring item that might still be worth doing as a strategic bet, with reasoning
+
+## Requirements
+
+- Show the actual scores and reasoning behind each item, not just the final ranking
+- Be upfront when confidence is low due to missing data rather than faking precision
+- Base effort estimates on the stated team capacity, not a generic assumption
+- Keep the "Now" group to what capacity can realistically deliver in one cycle
+
+## Related templates
+
+- [MVP Scope Document](MVP Scope Document.md)
+- [Quarterly Business Review Prep](../Strategy and Governance/Quarterly Business Review Prep.md)
+
+## Deepened by (v2)
+
+For the reasoning behind a reprioritization rather than just the score, see [Roadmap Update](../../templates2/Product Management/Roadmap Update.md). Full exchange rule in `assets/routing.md`.
