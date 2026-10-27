@@ -1,57 +1,34 @@
 # Changelog
 
-## [2.1.0] - 2026-09-14 - Structured v2 layer
+## Stabilization pass — V1/V2 separation, verification, and V3-readiness
 
-### Added
-- `assets/routing.md`, `assets/selection.md`, `assets/templates2/index.md` and `assets/templates2/moderate-layer.md`.
-- v2 methodologies in domain folders under `assets/templates2/`, including four new ones: Cash Flow Crisis Diagnosis, Stalled Growth Diagnosis, Draft-First Strategy Validation and Strategic Drift Diagnosis.
-- The template base layer, index and style files, `references/index.md` and `tools/` return.
+Context: prior to this pass, V1 and V2 worked correctly but the separation between them existed only as a packaging-time exercise — producing a clean V1 build required manually stripping v2 references out of 20 template files, `tools/`, and `references/index.md` each time, verified by ad hoc `grep`. This pass makes the separation structural and the verification mechanical, and closes several documented gaps in routing and selection.
 
-### Changed
-- The 20 templates are Markdown (`.md`) again.
-- The plugin-style `assets/template2/` layout is replaced by `assets/templates2/`, organized by domain.
+### V1/V2 separation
+- Removed the "Deepened by (v2)" section from all 20 v1 template files. This information was already fully captured in `assets/routing.md`'s lookup table — the sections were redundant duplication that also created the coupling. No information was lost.
+- Rewrote `tools/index.md` and all 9 `tools/**/*.md` files to be version-agnostic ("template or methodology," "deeper layer, where installed") — they now serve both V1-only and V1+V2 packages unmodified, with zero forking needed.
+- Rewrote `references/index.md` to be v1-only; the v1↔v2 domain mapping it used to carry now lives solely in `routing.md`, its canonical home.
+- Result: only `SKILL.md`, `assets/templates/base-layer.md`, `assets/routing.md`, and `assets/selection.md` may mention v2 by name — because these four *are* the router. Every other v1-side file is now v2-free at the source, not just after a packaging strip.
 
-### Removed
-- `assets/template2/orchestration.md` and the `learn` and `brainstorm` groups.
+### Mechanical verification (new)
+- Added `scripts/verify-v1-v2-separation.sh` — scans every `.md` file outside an explicit allowlist for any "v2" token or "templates2" reference; reports `PASS` or `FAIL` with file/line detail. Documented: what it checks, what counts as a violation, how to run it, what pass/fail mean.
+- Added `scripts/verify-links.sh` — resolves every relative markdown link in the project against the actual filesystem; reports `PASS` or `FAIL` with the broken link and its source file.
+- Running the separation script against the newly-cleaned project caught three genuine leftover v2 mentions that a manual review had missed (`references/index.md`, `tools/index.md`, `tools/pdf/View.md`) — since fixed. This is the exact failure mode Decision 10 exists to prevent going forward.
 
-## [2.0.0] - 2026-09 (approx.) - First v2 build
+### Routing and selection fixes
+- Fixed a real inconsistency: `selection.md` referred to "routing.md's Case A / B / C" but `routing.md` never actually defined those labels. Added the Case A/B/C definitions to `routing.md`'s "Decision rule, restated plainly," so the cross-reference is now accurate rather than a dead pointer.
+- Added the "When the user names a template" rule (previously undocumented): an explicitly requested template is a strong preference, not an absolute override — a clear mismatch gets a brief, non-argumentative re-route, not silent compliance or a lecture. Wired into `selection.md`, `base-layer.md`, and `moderate-layer.md`.
+- Added a unified "full pipeline, end to end" section to `selection.md` tying together the main-problem-first step, `routing.md`'s complexity/version gate, and the 7-level selection hierarchy into one ordered sequence.
+- Added one worked example per selection level (1 through 7, plus the wrong-explicit-template case) to `selection.md` — previously only two examples existed, both effectively level-1/2.
+- Softened the hardcoded "Finance and Fundraising has exactly four files" claim into an explicitly-labeled current-build description with a pointer to verify against `templates2/index.md`, so it can't silently go stale.
+- Added an explicit "Coverage gaps are real, not routing failures" section to `selection.md`, stating plainly that HR and Culture (and most of Legal and Compliance) have no v2 methodology yet, and that this must never be papered over by implying one exists.
 
-### Added
-- Specialist methodologies under `assets/template2/`: 29 files in plugin-style groups (bio-research, design, engineering, finance, learn, marketing, pdf-viewer, product-management, sales) plus `orchestration.md`, which describes the flow from request to specialist to assembled result.
-- `SKILL.md` updated with a section on specialist methodologies for complex requests.
+### Documentation added
+- `DECISIONS.md` (new) — the architectural decision record.
+- `TESTS.md` (new) — 8 routing/selection test cases with expected outcomes, traced against the current documentation.
+- This `CHANGELOG.md`.
 
-### Changed
-- The 20 templates are plain text (`.txt`) again.
-
-### Removed
-- Not carried into this build: the template base layer, index and style files, `references/index.md`, `tools/` and `scripts/`.
-
-## [1.3.0] - 2026-09-17 - Wording fix
-
-### Fixed
-- Three one-line corrections in `tools/pdf/Fill Form.md`, `tools/presentations/Presentations.md` and `tools/spreadsheets/Spreadsheets.md`.
-
-## [1.2.0] - 2026-09-17 - Version-agnostic tools and references
-
-### Added
-- `scripts/verify-links.sh` to check that relative Markdown links resolve.
-
-### Changed
-- 12 files in `tools/` and `references/index.md` reworded so they work with this version alone or with a deeper layer installed.
-
-## [1.1.0] - 2026-09-14 - Base layer and tools
-
-### Added
-- `assets/templates/base-layer.md` (operating contract), `index.md` (template map) and `style.md` (tone and formatting).
-- `references/index.md` and `tools/` (PDF annotate, fill form, open and view; documents; presentations; spreadsheets; data files; web documents) with an index.
-
-### Changed
-- All 20 templates converted from `.txt` to `.md`.
-- `SKILL.md` updated to point to the new layers.
-
-## [1.0.0] - 2026-09 (approx.) - First release
-
-### Added
-- `SKILL.md` business advisor covering eight domains and four business types.
-- Nine reference files (eight domains plus business types) and 20 fill-in templates in eight domain folders.
-- MIT `LICENSE`.
+### Explicitly not done (per scope)
+- No V3, Multi-Hands, or Multi-Brains work of any kind.
+- No template methodology content was rewritten.
+- No files were renamed, merged, or deleted (only "Deepened by (v2)" sections and one documentation column were removed, both fully preserved elsewhere).
