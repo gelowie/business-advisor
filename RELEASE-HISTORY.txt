@@ -1,7 +1,19 @@
 # Release history
 
 Version-by-version history of Business Advisor, newest first. Format based on Keep a Changelog; versions follow Semantic Versioning.
-Dates are approximate and taken from file timestamps. The file CHANGELOG.md holds the project's own development log.
+Dates are approximate and taken from file timestamps.
+
+## [3.0.0] - 2026-09-10 (approx.) - Early v3 draft
+
+### Added
+- First v3 draft: 31 methodology files under assets/templates2 in plugin-style groups (bio-research, design, engineering, finance, learn, marketing, pdf-viewer, product-management, productivity, sales), plus orchestration.md.
+- SKILL.md section on specialist methodologies for complex requests.
+
+### Changed
+- The 20 templates are plain text (.txt) again.
+
+### Removed
+- Not carried into this draft: routing.md, selection.md, the template base layer, index and style files, references/index.md, tools/, scripts/, and the CHANGELOG.md, DECISIONS.md and TESTS.md files.
 
 ## [2.3.0] - 2026-09-17 - Separation script and wording fixes
 
