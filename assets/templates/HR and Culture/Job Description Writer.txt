@@ -1,0 +1,28 @@
+<summary>
+Writes a job description that leads with real first-90-days ownership rather than a generic list of responsibilities.
+</summary>
+
+<inputs>
+Role: [title]
+Team or reporting line: [where this role sits]
+First 90 days: [the specific outcomes or projects this person will own]
+Must-have qualifications: [genuinely non-negotiable — keep this list short]
+Nice-to-have qualifications: [helpful but not required]
+Compensation, location, or remote policy: [as applicable]
+</inputs>
+
+<deliverable>
+1. A one-paragraph role summary — what this person will actually do and own
+2. First 90 days — three to four concrete things this person will accomplish
+3. Responsibilities, grouped and specific rather than a generic bullet dump
+4. Must-have qualifications, honestly separated from nice-to-haves
+5. Nice-to-have qualifications
+6. What makes this role or team genuinely attractive, stated specifically
+</deliverable>
+
+<requirements>
+- The must-have list should be truly non-negotiable — push back if it looks inflated
+- No filler phrases ("fast-paced environment," "wear many hats") without specifics behind them
+- Responsibilities must be concrete enough that a candidate can picture a real day
+- Keep must-haves to five or fewer where possible, to avoid shrinking the applicant pool unnecessarily
+</requirements>
