@@ -7,6 +7,30 @@ description: Comprehensive business advisor covering strategy, finance/fundraisi
 
 A general-purpose business consultant. It covers eight functional domains and tailors every answer to one of four business types, so the advice given to a solo consultant, a SaaS founder, an e-commerce brand, and a local cafe owner never sounds interchangeable.
 
+## Tiers (V1 / V2 / V3)
+
+This skill has three complexity tiers. `assets/routing.md` determines which
+tier a request belongs in and enforces search-first resource lookup for all
+three; `assets/selection.md` then picks the specific resource file(s).
+
+- **V1** (`assets/templates/`) — single, straightforward business questions.
+  Fully built: 20 templates across 8 domains.
+- **V2** (`assets/templates2/`) — deeper, multi-round diagnosis on ONE
+  problem at a time. **Scaffold only — not yet populated.** Falls through
+  to V1 as support until built.
+- **V3** (`assets/templates3/` + `assets/brains/` + `assets/multi-hands/`)
+  — complex, multi-problem cases needing decomposition, competing
+  hypotheses, investigation planning, cross-domain coordination
+  (Multi-Hands), multi-methodology coordination (Multi-Brains), trade-off
+  comparison, action sequencing, verification, and a mandatory final
+  consistency check. See `assets/templates3/v3-pipeline.md` for the full
+  stage sequence — this SKILL.md file intentionally does not restate that
+  methodology.
+
+Do not skip a tier's own resource search and answer generically when a
+relevant resource exists at that tier — this applies at V1's basic depth,
+V2's moderate depth, and V3's full rigor alike.
+
 ## How to use this skill
 
 **1. Identify the business type.** Check the conversation (including stored memory, if any) for what kind of business the user runs. If it's genuinely unclear *and* it would change the advice, ask — briefly, one question, with the four options below. If it's inferable or doesn't materially change the answer (e.g. "write me an NDA"), don't stop to ask — infer and state the assumption in passing.
@@ -35,25 +59,11 @@ Full lens details, including how each type reframes all eight domains below, liv
 
 Requests often span more than one domain (e.g. "help me price my SaaS and pitch it to investors" touches both product and finance) — read every relevant file.
 
-**3. Use a template if one fits.** `assets/templates/` has ready-to-fill prompt templates organized into the same eight domains (e.g. `Strategy and Governance/SWOT Analysis and Action Plan.txt`, `Finance and Fundraising/Pitch Deck Outline.txt`, `Operations and Supply Chain/SOP Builder.txt`, `HR and Culture/Job Description Writer.txt`, `Legal and Compliance/NDA Builder.txt`). Each template file has a `<summary>` tag describing what it produces, an `<inputs>` tag for the user's specifics, a `<deliverable>` tag with the output structure, and a `<requirements>` tag with the constraints to hold to. When a template matches the request, fill it in with what the user has already told you and run it directly rather than freelancing a structure from scratch — ask for any missing `<inputs>` only if they're essential.
+**3. Use a template if one fits.** `assets/templates/` has ready-to-fill prompt templates organized into the same eight domains (e.g. `Strategy and Governance/SWOT Analysis and Action Plan.md`, `Finance and Fundraising/Pitch Deck Outline.md`, `Operations and Supply Chain/SOP Builder.md`, `HR and Culture/Job Description Writer.md`, `Legal and Compliance/NDA Builder.md`) — see `assets/templates/index.md` for the full list and how they relate to each other. Each template file has a `## Summary` section describing what it produces, an `## Inputs` section for the user's specifics, a `## Deliverable` section with the output structure, a `## Requirements` section with the constraints to hold to, and a `## Related templates` section pointing to what else might be relevant. When a template matches the request, fill it in with what the user has already told you and run it directly rather than freelancing a structure from scratch — ask for any missing inputs only if they're essential.
 
 **4. Answer like a real consultant, not a framework generator.** Concrete numbers and specific recommendations over generic checklists. Every deliverable should end with a clear "what to do next," not just analysis. Flag when advice depends on facts the user hasn't given (e.g. "I'm assuming a 3-person team — let me know if that's off").
 
-## v3: specialist methodologies for complex requests
-
-For requests that go beyond a single template or reference lookup — multi-step problems, cross-domain problems, or anything that matches a specialist's own activation conditions below — this skill also has a specialist-methodology layer under `assets/templates2/`. Simple, single-domain requests (an NDA, a quick SWOT, a job description) never need this layer; keep using steps 1–4 above for those.
-
-When a request does warrant it:
-
-0. **Session bootstrap** (`assets/templates2/productivity/start/start.md`) — only when the conversation references standing context (a prior engagement, an ongoing initiative, business-specific shorthand); re-establish what's already known and decode any undefined terms before Learn runs. Skip entirely for a fresh, self-contained request.
-1. **Learn** (`assets/templates2/learn/learn.md`) — before reasoning, make sure the main problem, objective, and plan are actually clear; ask only the few questions that would change the advice; treat everything else as a stated assumption, not a gap.
-2. **Multi-Brain** — reason about the problem with two components: this `SKILL.md` as the core advisor, and `assets/templates2/product-management/brainstorm/brainstorm.md` as a second brain that challenges assumptions and surfaces alternatives. Brainstorm never overrides the core advisor; it sharpens it.
-3. **Decompose** — before picking specialists, break a multi-faceted problem into its plausible contributing components (a broad symptom like "sales are declining" is never one problem) rather than reaching for one generic answer.
-4. **Multi-Hands** — select whichever specialist(s) under `assets/templates2/` actually match those components (one, several in sequence, or several in parallel) rather than running all of them or activating one just because its domain was mentioned in passing. Each specialist file documents its own activation conditions, inputs, workflow, and boundaries with neighboring specialists.
-5. **Risk & quality review** — before assembling the final answer, check for risk that actually matters and isn't already covered by `sales/pipeline-review`, `engineering/deploy-checklist`, or `engineering/system-design`; don't manufacture a generic risk section where none is warranted.
-6. **Assemble** — bring specialist output back through the core advisor (with a second Multi-Brain pass if useful) into one coherent answer, checked against the Final Answer Standard in `orchestration.md`; the user should never see raw specialist hand-off, and assumptions should never be presented with the same confidence as confirmed facts.
-
-Full detail on this flow, the specialist directory, evidence/assumption labeling, and the boundaries between specialists lives in `assets/templates2/orchestration.md` — read it the first time a session needs more than one specialist.
+Steps 1–4 above are enough for the large majority of requests. They are this skill's operating layer — it owns every request it receives. The full operating contract behind these four steps (complexity boundary, validation, failure handling, and how it combines multiple templates when a request spans more than one area) lives in `assets/templates/base-layer.md` — read it the first time a request doesn't obviously resolve in four steps. For the tone and formatting this layer should use, see `assets/templates/style.md`.
 
 ## When domain and business-type advice conflict
 
