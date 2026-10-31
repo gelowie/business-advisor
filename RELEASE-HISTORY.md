@@ -3,6 +3,21 @@
 Version-by-version history of Business Advisor, newest first. Format based on Keep a Changelog; versions follow Semantic Versioning.
 Dates are approximate and taken from file timestamps.
 
+## [3.1.0] - 2026-09-21 - Complex-problem framework
+
+### Added
+- assets/templates3/ (11 modules): the complex-problem process, from decomposition through the mandatory final consistency check, with v3-pipeline.md as the sequence.
+- assets/brains/ (10 modules) and assets/multi-hands/domain-coordination.md: reasoning rules, state and context management, problem selection, decision making, and coordination across domains and methodologies.
+- assets/routing.md and assets/selection.md: tier routing and resource selection with search-first lookup.
+- assets/templates/base-layer.md, index.md and style.md; assets/templates2/index.md.
+
+### Changed
+- The 20 templates are Markdown (.md) files with Summary, Inputs, Deliverable, Requirements and Related templates sections.
+- SKILL.md rewritten around three tiers: single questions, single-problem diagnosis and complex multi-problem cases.
+
+### Removed
+- The 30 specialist methodologies and orchestration.md under assets/templates2/.
+
 ## [3.0.0] - 2026-09-10 (approx.) - Early v3 draft
 
 ### Added
