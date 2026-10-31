@@ -41,7 +41,6 @@
   <a href="#-project-structure">Structure</a> •
   <a href="#-contributing">Contributing</a>
 </p>
----
  
 ## 🚀 What is Business Advisor?
  
