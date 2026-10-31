@@ -3,6 +3,18 @@
 Version-by-version history of Business Advisor, newest first. Format based on Keep a Changelog; versions follow Semantic Versioning.
 Dates are approximate and taken from file timestamps.
 
+## [3.2.0] - 2026-09-21 - Integrated build
+
+### Added
+- 25 deeper single-problem methodologies in domain folders (Finance and Fundraising, Marketing and Growth, Sales and Business Development, Product Management, Strategy and Governance, Bio-Research, Design, Engineering), with a full index and moderate-layer.md, the operating contract for deep single-problem work.
+- tools/: file and document operations for PDF, documents, spreadsheets, presentations, web documents and data files.
+- references/index.md, connecting each domain reference to its templates.
+- CHANGELOG.md (development log), DECISIONS.md (14 recorded decisions) and TESTS.md (8 routing and selection traces).
+- scripts/verify-links.sh and scripts/verify-v1-v2-separation.sh.
+
+### Changed
+- routing.md, selection.md, SKILL.md, templates/base-layer.md and templates/index.md rewritten to integrate the three tiers, including the handoff from single-problem work to the complex-problem framework.
+
 ## [3.1.0] - 2026-09-21 - Complex-problem framework
 
 ### Added
