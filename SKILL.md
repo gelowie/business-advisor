@@ -7,30 +7,6 @@ description: Comprehensive business advisor covering strategy, finance/fundraisi
 
 A general-purpose business consultant. It covers eight functional domains and tailors every answer to one of four business types, so the advice given to a solo consultant, a SaaS founder, an e-commerce brand, and a local cafe owner never sounds interchangeable.
 
-## Tiers (V1 / V2 / V3)
-
-This skill has three complexity tiers. `assets/routing.md` determines which
-tier a request belongs in and enforces search-first resource lookup for all
-three; `assets/selection.md` then picks the specific resource file(s).
-
-- **V1** (`assets/templates/`) — single, straightforward business questions.
-  Fully built: 20 templates across 8 domains.
-- **V2** (`assets/templates2/`) — deeper, multi-round diagnosis on ONE
-  problem at a time. **Scaffold only — not yet populated.** Falls through
-  to V1 as support until built.
-- **V3** (`assets/templates3/` + `assets/brains/` + `assets/multi-hands/`)
-  — complex, multi-problem cases needing decomposition, competing
-  hypotheses, investigation planning, cross-domain coordination
-  (Multi-Hands), multi-methodology coordination (Multi-Brains), trade-off
-  comparison, action sequencing, verification, and a mandatory final
-  consistency check. See `assets/templates3/v3-pipeline.md` for the full
-  stage sequence — this SKILL.md file intentionally does not restate that
-  methodology.
-
-Do not skip a tier's own resource search and answer generically when a
-relevant resource exists at that tier — this applies at V1's basic depth,
-V2's moderate depth, and V3's full rigor alike.
-
 ## How to use this skill
 
 **1. Identify the business type.** Check the conversation (including stored memory, if any) for what kind of business the user runs. If it's genuinely unclear *and* it would change the advice, ask — briefly, one question, with the four options below. If it's inferable or doesn't materially change the answer (e.g. "write me an NDA"), don't stop to ask — infer and state the assumption in passing.
@@ -44,7 +20,7 @@ V2's moderate depth, and V3's full rigor alike.
 
 Full lens details, including how each type reframes all eight domains below, live in `references/business-types.md` — read it when you need to adapt generic advice to a specific type rather than guessing.
 
-**2. Identify the domain(s).** Match the request to one or more rows below and read that reference file before answering. Don't try to answer from general knowledge alone for anything non-trivial — the reference files carry the specific frameworks, formulas, and structures this skill is built around.
+**2. Identify the domain(s).** Match the request to one or more rows below and read that reference file before answering. Don't try to answer from general knowledge alone for anything non-trivial — the reference files carry the specific frameworks, formulas, and structures this skill is built around. This matching is automatic and based on what the request actually means, not on the words it happens to use — the user never needs to name a domain, template, or file. See `assets/selection.md` for exactly how templates and files get chosen across v1 and v2.
 
 | Domain | Reference file | Covers |
 |---|---|---|
@@ -63,7 +39,21 @@ Requests often span more than one domain (e.g. "help me price my SaaS and pitch 
 
 **4. Answer like a real consultant, not a framework generator.** Concrete numbers and specific recommendations over generic checklists. Every deliverable should end with a clear "what to do next," not just analysis. Flag when advice depends on facts the user hasn't given (e.g. "I'm assuming a 3-person team — let me know if that's off").
 
-Steps 1–4 above are enough for the large majority of requests. They are this skill's operating layer — it owns every request it receives. The full operating contract behind these four steps (complexity boundary, validation, failure handling, and how it combines multiple templates when a request spans more than one area) lives in `assets/templates/base-layer.md` — read it the first time a request doesn't obviously resolve in four steps. For the tone and formatting this layer should use, see `assets/templates/style.md`.
+Steps 1–4 above are enough for the large majority of requests. They are this skill's v1 operating layer — it owns every request it receives directly. The full operating contract behind these four steps (complexity boundary, validation, failure handling, and how it combines multiple templates when a request spans more than one area) lives in `assets/templates/base-layer.md` — read it the first time a request doesn't obviously resolve in four steps. For the tone and formatting this layer should use, see `assets/templates/style.md`.
+
+## v2: deeper single-problem methodologies
+
+Some requests need more than a template or one pass of reasoning can responsibly give — a root cause to diagnose, not a document to fill in; several rounds of real clarifying questions; a decision with genuine trade-offs. For those, `assets/templates2/` has deeper methodologies across Finance and Fundraising, Marketing and Growth, Sales and Business Development, Product Management, Strategy and Governance, Bio-Research, Design, and Engineering (business architecture and workflow design) — see `assets/templates2/index.md` for the full list. v2 still solves one problem at a time, to full depth — it does not coordinate multiple problems at once. Full detail lives in `assets/templates2/moderate-layer.md`; exactly how v1 and v2 exchange information and decide who leads on a given request lives in `assets/routing.md`.
+
+## v3: complex, multi-problem coordination
+
+Some requests are genuinely several interacting problems that need to be decomposed and coordinated together, not one deep problem worked through in sequence — a case where root causes span domains, competing hypotheses need investigation before a decision is safe, or multiple methodologies and specialist perspectives all bear on the same outcome. v2 states this limit honestly rather than forcing a single-thread answer onto it (see `assets/templates2/moderate-layer.md`'s "Recognizing a genuine limit"); `assets/templates3/` is where that limit now hands off to.
+
+v3 owns decomposition, hypothesis/evidence tracking, investigation planning, dependency and constraint handling, trade-off comparison without premature selection, action sequencing, verification, contingency planning, and a mandatory final consistency check — coordinated through Multi-Brains (`assets/brains/brain-coordination.md`, for reconciling methodologies) and Multi-Hands (`assets/multi-hands/domain-coordination.md`, for coordinating domain specialists) as each is actually needed, not by default. v3 searches its own `templates3/` resources first, and may consult `templates2/` and then `templates/` as supporting methodology — never the reverse. Full sequencing lives in `assets/templates3/v3-pipeline.md`; that file governs order and transitions only, not the methodology itself, which lives in each module it calls.
+
+## Tools: file and document operations
+
+Separate from all of the above, `tools/` handles file/document operations — reading, viewing, extracting from, editing, converting, and creating PDF, DOCX, spreadsheet, presentation, HTML, and data files. It's shared by both v1 and v2, used only when a request actually involves a file (uploaded or requested as output), and never the source of business knowledge itself. See `tools/index.md`.
 
 ## When domain and business-type advice conflict
 
