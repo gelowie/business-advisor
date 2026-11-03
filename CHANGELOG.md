@@ -1,5 +1,32 @@
 # Changelog
 
+## V3 coordination layer — resource decisions become genuinely coordinated, not sequential
+
+Context: the fixed V3 build (previous entry) passed its full authorized test, but a follow-up review found the components behaved as independently-triggered files rather than a coordinated advisory system — Multi-Hands/Multi-Brains only reacted after Decomposition had already run, nothing prevented resource churn mid-analysis, and there was no controlled way to update the resource set when new evidence warranted it without a full restart.
+
+### Changed (no new files)
+- `assets/templates3/v3-pipeline.md` — rewritten to add: Stage 0 (Problem Understanding, preceding Routing), Stage 2 (Resource Coordination — Multi-Hands/Multi-Brains now evaluate CANDIDATE resources right after Selection, before Decomposition, instead of reacting after sub-problems already exist), Stage 3 (Lock — the resource set is written to state and treated as settled), Stage 2a (bounded Resource Re-evaluation — the only sanctioned way the locked set changes, preserving all prior Hypotheses/Evidence/Decisions per `state-management.md`'s preservation rule, explicitly distinct from `escalation-conditions.md` and from verification's reassessment loop). Added an explicit "one coherent answer" output principle extending `selection.md`'s existing v1/v2 rule of the same name into V3.
+- `assets/multi-hands/domain-coordination.md` and `assets/brains/brain-coordination.md` — "Called by" sections updated to reflect the earlier (Stage 2) participation point and the lock/re-evaluation relationship, without changing either file's core responsibility.
+- `assets/templates3/dependency-impact.md` and `assets/templates3/investigation-planning.md` — each now explicitly named as a Stage 2a trigger source (they flag insufficiency back to `v3-pipeline.md`; neither re-selects resources itself).
+- `assets/brains/state-management.md` — Domains/Methodologies field ownership rules updated to state they're written once at Stage 3 and only reopened via Stage 2a, never edited informally mid-reasoning.
+- `assets/templates3/final-consistency-check.md` — added an explicit checklist item verifying the final answer is one integrated solution, not fragmented per-domain/per-brain output.
+- `TESTS.md` — added TEST 09 (Coordinated Resource Decision) and TEST 10 (Coordination Integrity / Resource Re-evaluation), both traced against the rewritten pipeline.
+
+Both verification scripts re-run and PASS. All four previously-fixed findings (reasoning-rules.md, context-management.md, core-advisor.md, quality-control.md reachability) re-confirmed intact — none were touched by this change.
+
+## V3 fixes — wiring, contradiction, and reachability corrections
+
+Context: a full authorized test of the integrated V3 build found five real issues by mechanically tracing file cross-references rather than assuming reachability: `reasoning-rules.md` and `context-management.md` were completely unreferenced by any other file; `quality-control.md` was only reachable via `final-consistency-check.md`, not the per-stage checks it described; `core-advisor.md`'s single-methodology path was never actually invoked by `v3-pipeline.md`; Multi-Hands' activation trigger was judgment-based, not reproducible; and `base-layer.md` contained stale sentences claiming v3 doesn't exist, contradicting `routing.md`.
+
+### Fixed (no new files, no architecture redesign)
+- `assets/templates/base-layer.md` — corrected 4 stale sentences (version note, two "reaches beyond" passages, and the "no other layer to hand off to" line) to match `routing.md`'s reality that v3 exists.
+- `assets/brains/reasoning-rules.md` — wired into 4 real consultation points: `hypothesis-evidence.md`'s tagging step, `decision-making.md`'s finalization step, `verification-loop.md`'s status recording, `final-consistency-check.md`'s checklist. Each host file now names it explicitly, and the file states what it does not duplicate (quality-control.md, state-management.md).
+- `assets/brains/context-management.md` — wired into 2 real points: `problem-selection.md`'s pre-handoff filter, `multi-hands/domain-coordination.md`'s pre-specialist filter. States what it does not duplicate (state-management.md).
+- `assets/multi-hands/domain-coordination.md` — trigger made mechanical: activates only when 2+ sub-problems resolve to resources under different domain folders, per `selection.md`'s own matching — not informal judgment.
+- `assets/templates3/v3-pipeline.md` — added an explicit per-sub-problem routing table so `core-advisor.md` (single resource/one domain) and `brain-coordination.md` (multi-resource/one domain) triggers are mechanical, tied to `selection.md`'s actual match count and domain folder.
+- `assets/brains/quality-control.md` — scoped to exactly 3 named checkpoints (after decomposition, after hypothesis-evidence, after action-sequencing), matching what actually calls it, avoiding exhaustive per-stage overhead.
+- `scripts/verify-v1-v2-separation.sh` allowlist and both verification scripts re-run and confirmed PASS after every edit round.
+
 ## V3 integration — Multi-Brains, Multi-Hands, and the v1/v2 → v3 handoff
 
 Context: V1 and V2 were stabilized and V3-ready per the prior pass, but V3 itself did not physically exist — `moderate-layer.md` stated "there is no v3 in this build to hand off to." This pass builds V3's core architecture inside the same package (`assets/templates3/`, `assets/brains/`, `assets/multi-hands/`) and wires the actual handoff, without touching v1/v2 methodology content.
