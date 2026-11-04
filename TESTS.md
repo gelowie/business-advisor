@@ -61,3 +61,19 @@
 ## Known gap in this test suite
 
 All 8 cases live in Finance and Fundraising, Operations, or Marketing — the best-documented, most cross-linked domains. No case here exercises HR and Culture or Legal and Compliance, where V2 coverage is thin or absent (see `selection.md`'s "Coverage gaps are real, not routing failures"). Worth adding before V3: a test case that confirms the system falls back to V1 cleanly in a coverage-gap domain rather than pretending a V2 methodology exists.
+
+---
+
+## V3 coordination tests (added post-integration)
+
+### TEST 09 — Coordinated Resource Decision (AC — Coordinated Resource Decision)
+**Input:** A device-instability engineering case (restarts, battery, Wi-Fi, temperature, CPU) where the 500-unit remediation cost is genuinely a Finance question, not just an Engineering one.
+**Trace:** `v3-pipeline.md` Stage 0 forms an initial read (engineering + possibly finance). Stage 1 selection.md identifies candidates from `templates3`/`templates2` (Engineering/Debug.md, Finance/Variance-Analysis-adjacent methodology). Stage 2: Multi-Hands checks candidate domain folders — Engineering and Finance are distinct folders, so Multi-Hands activates; Multi-Brains checks whether either domain needs more than one methodology reconciled within itself. Stage 3 locks the resource set (both domains, specific files named). Decomposition and the rest of the pipeline proceed against that locked set. `final-consistency-check.md` confirms the final answer is one integrated remediation plan, not a separate "Engineering says / Finance says" split.
+**Expected:** Multi-Hands activates because domains are genuinely distinct (not keyword-triggered); resource set locks once; final answer is single and coherent.
+**Result:** PASS (traced against the rewritten v3-pipeline.md Stage 2/3)
+
+### TEST 10 — Coordination Integrity / Resource Re-evaluation
+**Input:** Same engineering case as Test 09, but investigation-planning.md's voltage-under-load test later reveals a supply-chain dependency (a specific component's lead time) that no candidate at Stage 2 covered — an Operations angle, not originally identified.
+**Trace:** `investigation-planning.md` flags this to `v3-pipeline.md` per its own "does not own the resource set" rule. This triggers Stage 2a (bounded Resource Re-evaluation) — NOT `escalation-conditions.md` (the process can continue; it just needs an added resource), and NOT a full pipeline restart. Only the Domains/Methodologies fields re-open; the Hypotheses, Evidence, and Decisions already recorded from Test 09's run are preserved untouched per `state-management.md`'s preservation rule. Multi-Hands re-evaluates with Operations added to the candidate set; the resource set re-locks (Stage 3) before reasoning resumes.
+**Expected:** Resource set updates without losing prior findings; mechanism used is Stage 2a, not escalation or a full restart; state preservation confirmed.
+**Result:** PASS (traced against the rewritten v3-pipeline.md Stage 2a and the state-management.md ownership-rule update)
