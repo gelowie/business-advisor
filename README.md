@@ -14,7 +14,7 @@
     <img alt="Business Advisor: AI Skill" src="https://img.shields.io/badge/Business%20Advisor-AI%20Skill-0a66c2?style=flat-square" />
   </a>
   <a href="RELEASE-HISTORY.txt">
-    <img alt="Version 3.4.0" src="https://img.shields.io/badge/Version-3.4.0-blue?style=flat-square" />
+    <img alt="Version 3.5.0" src="https://img.shields.io/badge/Version-3.5.0-blue?style=flat-square" />
   </a>
   <a href="LICENSE">
     <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-green?style=flat-square" />
@@ -66,7 +66,7 @@ A general-purpose assistant answers business questions without a fixed process. 
 - 🔬 **25 deeper methodologies:** root-cause diagnostics for cash flow crises, stalled growth, strategic drift and more.
 - 🧩 **A complex-problem framework:** 22 modules that coordinate the resource set before reasoning starts, check quality at three defined points and end in a mandatory final consistency check.
 - 📂 **File and document tools:** instructions for reading, extracting and editing PDFs, spreadsheets, presentations and documents.
-- ✅ **Recorded decisions, tests and checks:** 16 architecture decisions, 10 routing and coordination traces and 2 verification scripts.
+- ✅ **Recorded decisions, tests and checks:** 17 architecture decisions, 10 routing and coordination traces, a recorded validation status and 2 verification scripts.
 - 🛡️ **Built-in caution:** legal, tax and compliance output is flagged as a starting draft for professional review.
 
 ---
@@ -369,9 +369,19 @@ Two scripts in `scripts/` check the project's own consistency. Run them from the
 
 Both report PASS or FAIL and list any offending lines. Beyond the scripts:
 
-- [`TESTS.md`](TESTS.md) documents 10 routing, selection and coordination traces.
-- [`DECISIONS.md`](DECISIONS.md) records 16 architecture decisions with their reasons.
+- [`TESTS.md`](TESTS.md) documents 10 routing, selection and coordination traces and the project's recorded validation status (below).
+- [`DECISIONS.md`](DECISIONS.md) records 17 architecture decisions with their reasons.
 - [`CHANGELOG.md`](CHANGELOG.md) is the project's development log.
+
+**Recorded validation status.** The project records the result of three separate validation rounds, kept as three categories rather than one overall grade:
+
+| Category | Recorded result |
+| :--- | :--- |
+| Structural verification (file-reference trace) | **PASS** |
+| Behavioral output verification (real answers to untold prompts) | **PASS** |
+| Internal resource-execution verification | **UNVERIFIABLE** |
+
+The third category is a limit of observation, not a defect: a single model response cannot expose proof that its resource selection happened before, and independently of, the answer it accompanies. These are the project's own recorded results, documented in `TESTS.md`, `DECISIONS.md` and `CHANGELOG.md`. They are not an independent audit.
 
 ---
 
@@ -405,7 +415,7 @@ business-advisor/
 
 - 🚨 **Not professional advice.** Output is a framework or starting draft. Contracts, tax and compliance material should be reviewed by a qualified professional (accountant, attorney, lender) before you rely on it. The authors accept no liability for decisions made using it.
 - 🎲 **Routing is a heuristic.** Tier selection and search-first lookup are workflow requirements written into the skill, not a technical guarantee that a model will follow them every time.
-- 🧪 **Tests are documented traces.** `TESTS.md` records 10 reasoning traces covering routing, selection and resource coordination. They confirm the rules do not contradict each other. They do not prove that every real request is handled identically.
+- 🧪 **Validation is self-recorded.** `TESTS.md` records 10 reasoning traces and the project's validation status. Internal resource selection is recorded as unverifiable from a single response. None of this is an independent audit, and none of it proves that every real request is handled identically.
 - 📉 **Uneven coverage.** HR and Culture and Legal and Compliance have templates and references but few or no deeper methodologies. Requests there are handled with Tier 1.
 - 🇺🇸 **US-leaning examples.** Several references use US concepts (LLC, C-Corp, CCPA, HIPAA). Adapt them to your country and check local rules.
 - 📄 **File tools depend on the host.** Working with PDFs and other files requires an AI tool that can open and edit them.
@@ -427,7 +437,7 @@ Corrections and suggestions are welcome. Please keep to these rules:
 
 ## 🕑 Version History
 
-See [`RELEASE-HISTORY.txt`](RELEASE-HISTORY.txt) for what changed in each version. This README describes version 3.4.0.
+See [`RELEASE-HISTORY.txt`](RELEASE-HISTORY.txt) for what changed in each version. This README describes version 3.5.0.
 
 ---
 
