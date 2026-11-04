@@ -14,7 +14,7 @@
     <img alt="Business Advisor: AI Skill" src="https://img.shields.io/badge/Business%20Advisor-AI%20Skill-0a66c2?style=flat-square" />
   </a>
   <a href="RELEASE-HISTORY.txt">
-    <img alt="Version 3.3.0" src="https://img.shields.io/badge/Version-3.3.0-blue?style=flat-square" />
+    <img alt="Version 3.4.0" src="https://img.shields.io/badge/Version-3.4.0-blue?style=flat-square" />
   </a>
   <a href="LICENSE">
     <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-green?style=flat-square" />
@@ -64,9 +64,9 @@ A general-purpose assistant answers business questions without a fixed process. 
 - 🧠 **3-tier handling:** routes requests from a single question, to deep single-problem diagnosis, to complex multi-problem cases, with a search-first rule at every tier.
 - 📝 **20 fill-in templates:** ready-made structures for pitch decks, SOPs, SWOT analyses and more.
 - 🔬 **25 deeper methodologies:** root-cause diagnostics for cash flow crises, stalled growth, strategic drift and more.
-- 🧩 **A complex-problem framework:** 22 modules with mechanical routing between them, quality checks at three defined points and a mandatory final consistency check.
+- 🧩 **A complex-problem framework:** 22 modules that coordinate the resource set before reasoning starts, check quality at three defined points and end in a mandatory final consistency check.
 - 📂 **File and document tools:** instructions for reading, extracting and editing PDFs, spreadsheets, presentations and documents.
-- ✅ **Recorded decisions, tests and checks:** 14 architecture decisions, 8 routing traces and 2 verification scripts.
+- ✅ **Recorded decisions, tests and checks:** 16 architecture decisions, 10 routing and coordination traces and 2 verification scripts.
 - 🛡️ **Built-in caution:** legal, tax and compliance output is flagged as a starting draft for professional review.
 
 ---
@@ -122,17 +122,16 @@ Tier 2 can use Tier 1 resources, and Tier 3 can use both. Tiers 1 and 2 never de
 **Complex problems** follow the sequence in [`v3-pipeline.md`](assets/templates3/v3-pipeline.md). Not every problem runs every stage.
 
 ```text
-Routing
-  -> Resource selection (Tier 3 first, then Tier 2, then Tier 1 as support)
-  -> State initialization
+Problem understanding     (what the user is actually trying to solve, before routing)
+  -> Routing and resource selection
+  -> Resource coordination (Multi-Hands and Multi-Brains compare the candidate resources)
+  -> Resource lock         (the resource set is written to state and treated as settled)
   -> Decomposition
   -> Problem selection and sequencing
   -> Brainstorm            (only if there is no obvious explanation)
   -> Hypotheses and evidence
   -> Investigation planning
-  -> Dependencies and constraints
-  -> Multi-Hands           (only if the problem spans several domains)
-  -> Multi-Brains          (only if methodologies genuinely conflict or overlap)
+  -> Dependencies and constraints   (may trigger a bounded resource re-evaluation)
   -> Trade-off comparison
   -> Decision
   -> Action sequencing
@@ -142,16 +141,18 @@ Routing
   -> Final answer
 ```
 
-For each sub-problem, the pipeline routes by what selection returned, not by a fresh judgment of how complex the problem feels:
+**Resources are coordinated before reasoning starts.** Right after selection, the pipeline routes by what selection returned:
 
-| Resources selected for a sub-problem | Route |
+| Candidates identified | Route |
 | :--- | :--- |
-| One resource file | Core Advisor, the direct single-methodology path |
-| Several resource files within one domain | Multi-Brains reconciles the methodologies |
-| One resource file from each of several domains | Multi-Hands coordinates the domains; Core Advisor runs each resource |
-| Several resource files spanning several domains | Multi-Hands first, then Multi-Brains reconciles any conflicts |
+| Exactly one resource | Core Advisor, the direct single-methodology path |
+| Several resources within one domain | Multi-Brains reconciles the methodologies |
+| One resource each from several domains | Multi-Hands coordinates the domains; Core Advisor runs each resource |
+| Several resources spanning several domains | Multi-Hands first, then Multi-Brains reconciles any conflicts |
 
-Quality Control runs at exactly three checkpoints: after decomposition, after hypotheses and evidence, and after action sequencing. The final consistency check is the only mandatory gate at the end.
+The resulting set is locked into the working state. The pipeline does not silently add or swap resources mid-analysis. If dependency analysis or investigation planning surfaces real evidence that the locked set is insufficient, a bounded re-evaluation reopens only the resource set. Known facts, hypotheses, evidence and decisions already recorded are preserved. Re-evaluation is distinct from escalation: escalation applies when the process cannot responsibly continue at all.
+
+Quality Control runs at exactly three checkpoints: after decomposition, after hypotheses and evidence, and after action sequencing. The final consistency check is the only mandatory gate at the end, and it confirms that the answer is one integrated solution rather than fragmented per-domain output.
 
 ---
 
@@ -368,8 +369,8 @@ Two scripts in `scripts/` check the project's own consistency. Run them from the
 
 Both report PASS or FAIL and list any offending lines. Beyond the scripts:
 
-- [`TESTS.md`](TESTS.md) documents 8 routing and selection traces.
-- [`DECISIONS.md`](DECISIONS.md) records 14 architecture decisions with their reasons.
+- [`TESTS.md`](TESTS.md) documents 10 routing, selection and coordination traces.
+- [`DECISIONS.md`](DECISIONS.md) records 16 architecture decisions with their reasons.
 - [`CHANGELOG.md`](CHANGELOG.md) is the project's development log.
 
 ---
@@ -404,7 +405,7 @@ business-advisor/
 
 - 🚨 **Not professional advice.** Output is a framework or starting draft. Contracts, tax and compliance material should be reviewed by a qualified professional (accountant, attorney, lender) before you rely on it. The authors accept no liability for decisions made using it.
 - 🎲 **Routing is a heuristic.** Tier selection and search-first lookup are workflow requirements written into the skill, not a technical guarantee that a model will follow them every time.
-- 🧪 **Tests are documented traces.** `TESTS.md` records 8 reasoning traces that confirm the rules do not contradict each other. They do not prove that every real request is handled identically, and they do not cover the complex-problem framework.
+- 🧪 **Tests are documented traces.** `TESTS.md` records 10 reasoning traces covering routing, selection and resource coordination. They confirm the rules do not contradict each other. They do not prove that every real request is handled identically.
 - 📉 **Uneven coverage.** HR and Culture and Legal and Compliance have templates and references but few or no deeper methodologies. Requests there are handled with Tier 1.
 - 🇺🇸 **US-leaning examples.** Several references use US concepts (LLC, C-Corp, CCPA, HIPAA). Adapt them to your country and check local rules.
 - 📄 **File tools depend on the host.** Working with PDFs and other files requires an AI tool that can open and edit them.
@@ -426,7 +427,7 @@ Corrections and suggestions are welcome. Please keep to these rules:
 
 ## 🕑 Version History
 
-See [`RELEASE-HISTORY.txt`](RELEASE-HISTORY.txt) for what changed in each version. This README describes version 3.3.0.
+See [`RELEASE-HISTORY.txt`](RELEASE-HISTORY.txt) for what changed in each version. This README describes version 3.4.0.
 
 ---
 
