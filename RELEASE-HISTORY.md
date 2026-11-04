@@ -3,6 +3,19 @@
 Version-by-version history of Business Advisor, newest first. Format based on Keep a Changelog; versions follow Semantic Versioning.
 Dates are approximate and taken from file timestamps.
 
+## [3.4.0] - 2026-09-24 - Coordination layer
+
+### Changed
+- assets/templates3/v3-pipeline.md rewritten: Stage 0 problem understanding, Stage 2 resource coordination (Multi-Hands and Multi-Brains evaluate the candidate resources right after selection, before decomposition), Stage 3 resource lock, and Stage 2a bounded resource re-evaluation.
+- Multi-Hands and Multi-Brains now participate at candidate-comparison time, and their "Called by" sections describe the lock and re-evaluation relationship.
+- dependency-impact.md and investigation-planning.md are named as the only sources that can trigger a re-evaluation; neither re-selects resources itself.
+- state-management.md: the Domains and Methodologies fields are written once at the lock and reopened only through a re-evaluation. Known facts, hypotheses, evidence and decisions are preserved.
+- final-consistency-check.md: a new checklist item confirms the final answer is one integrated solution, not fragmented per-domain or per-methodology output.
+
+### Added
+- TESTS.md: trace 09 (coordinated resource decision) and trace 10 (coordination integrity and resource re-evaluation), 10 traces in total.
+- DECISIONS.md: decision 15 (resource coordination happens once and locks) and decision 16 (re-evaluation is bounded and distinct from escalation), 16 decisions in total.
+
 ## [3.3.0] - 2026-09-24 - Wiring and reachability fixes
 
 ### Fixed
