@@ -14,7 +14,7 @@
     <img alt="Business Advisor Pro: AI Skill" src="https://img.shields.io/static/v1?label=Business%20Advisor%20Pro&message=AI%20Skill&color=0a66c2&style=flat-square" />
   </a>
   <a href="RELEASE-HISTORY.md">
-    <img alt="Version 4.0.0" src="https://img.shields.io/static/v1?label=Version&message=4.0.0&color=blue&style=flat-square" />
+    <img alt="Version 4.0.1" src="https://img.shields.io/static/v1?label=Version&message=4.0.1&color=blue&style=flat-square" />
   </a>
   <a href="LICENSE">
     <img alt="License: MIT" src="https://img.shields.io/static/v1?label=License&message=MIT&color=green&style=flat-square" />
@@ -67,6 +67,7 @@ A general-purpose assistant answers business questions without a fixed process. 
 - 🏢 **4 business-type lenses** with a money-and-capital view for each: service, digital/SaaS, physical product/e-commerce and local brick-and-mortar.
 - 📝 **23 fill-in templates** and 🔬 **26 deeper methodologies** for single problems, from balance-sheet health to valuation and exit readiness.
 - 🧩 **A complex-problem framework** of 22 modules for several interacting problems, ending in a mandatory final consistency check.
+- 🔗 **Companion-skill awareness:** knows the optional `business-advisor-visual-prompt` skill, reads the structured prompts it builds without re-asking what they state, and can mention it once to a user who cannot explain their problem. Nothing depends on it being installed.
 - 📂 **File and document tools** for PDFs, documents, spreadsheets, presentations, web documents and data files.
 - 🛡️ **Built-in caution:** legal, tax and compliance output is flagged as a starting draft for professional review.
 
@@ -389,6 +390,18 @@ Tier 3 is a set of 22 modules: an 11-module process, 10 reasoning modules and on
 
 ---
 
+## 🔗 Companion Skill (Optional)
+
+[`business-advisor-visual-prompt`](assets/companion-skills.md) is a separate skill that rebuilds rough notes or an existing prompt into a structured prompt for this skill. Business Advisor Pro does not need it and does not install it. It only knows the skill exists:
+
+- **A structured prompt arrives:** the sections (*In my words*, *Business*, *Known*, *Not provided yet*, *Assumptions to verify*, *Research context*, *Outcome I want*) are read as organized input. Known facts are not re-asked, missing items follow the precision gate, and assumptions go into the assumption ledger.
+- **The tier is still decided here:** the prompt's template and target labels are hints, never routing instructions.
+- **A user cannot explain their problem:** the skill mentions the companion once, in one line, and still answers normally.
+
+Full rules: [`assets/companion-skills.md`](assets/companion-skills.md).
+
+---
+
 ## 📂 File & Document Tools
 
 [`tools/`](tools/index.md) covers file operations only: reading, viewing, extracting from, editing, converting and creating files. It is not a source of business knowledge, and it is used only when a request involves a file.
@@ -419,6 +432,7 @@ business-advisor-pro/
     ├── routing.md           # Which tier owns a request
     ├── selection.md         # How resources are chosen
     ├── precision-gate.md    # Checks before any number or money-sensitive claim
+    ├── companion-skills.md  # Optional companion skill: reading its prompts, when to mention it
     ├── templates/           # 23 templates in 8 domain folders, plus index, base layer and style
     ├── templates2/          # 26 methodologies in 6 domain folders, plus index and moderate-layer.md
     ├── templates3/          # Complex-problem process (11 modules)
@@ -454,7 +468,14 @@ Corrections and suggestions are welcome. Please keep to these rules:
 
 ## 🕑 Version History
 
-See [`RELEASE-HISTORY.md`](RELEASE-HISTORY.md) for what changed in each version. This README describes version 4.0.0.
+### What's new in 4.0.1
+
+- **Added** [`assets/companion-skills.md`](assets/companion-skills.md): awareness of the optional `business-advisor-visual-prompt` skill, covering how to read the structured prompts it builds and when to mention it.
+- **Changed** `SKILL.md`, `assets/routing.md`, `assets/precision-gate.md` and this README with short pointers to it.
+- **Unchanged:** the templates, methodologies, complex-problem framework, references and tools.
+
+
+See [`RELEASE-HISTORY.md`](RELEASE-HISTORY.md) for what changed in each version. This README describes version 4.0.1. Version 4.0.1 adds awareness of the optional companion skill `business-advisor-visual-prompt`.
 
 ---
 
