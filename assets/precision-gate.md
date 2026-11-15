@@ -9,6 +9,7 @@ Business advice moves real money, so a confident wrong number is worse than a sl
 - If the user doesn't know a figure, proceed with a **range** built from clearly labeled assumptions, and say which figure to gather to tighten it.
 - If the missing input is non-essential, assume sensibly, state the assumption in passing, and continue.
 - **Never invent a figure** and present it as the user's or as fact.
+- Inputs may arrive already sorted into *Known*, *Not provided yet* and *Assumptions to verify* by the optional companion skill `business-advisor-visual-prompt`. Use *Known* as given, treat *Not provided yet* by the rules above, and enter the assumptions in the ledger in §3 (`companion-skills.md`).
 
 ## 2. Integrity and math checks
 
