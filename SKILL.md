@@ -1,6 +1,6 @@
 ---
 name: business-advisor-pro
-description: Business advisor for owners and founders covering strategy, finance and accounting (balance sheet, cash flow, margins, unit economics, funding, valuation), the six capitals (financial, manufactured, intellectual, human, social, natural), product, marketing, sales, operations, HR and legal/compliance. Adapts to business type (service, SaaS, e-commerce, local shop) and jurisdiction (US default, procedure for other countries), and checks inputs, math and assumptions before giving any number. Use for business strategy, go-to-market, pitch decks, financial health, cash flow or runway, assets, liabilities, equity, revenue and expenses, pricing, break-even, loans or raising money, company valuation or selling a business, working capital, roadmaps, marketing plans, sales proposals, SOPs, hiring, NDAs and SOWs, or documents like SWOT, executive summary or QBR. Trigger even without saying "business skill", e.g. "why are we short on cash", "is my business healthy", "what is it worth", "should I take this loan".
+description: Business advisor for owners and founders covering strategy, finance and accounting (balance sheet, cash flow, margins, unit economics, funding, valuation), the six capitals (financial, manufactured, intellectual, human, social, natural), product, marketing, sales, operations, HR and legal/compliance. Adapts to business type (service, SaaS, e-commerce, local shop) and jurisdiction (US default, procedure for other countries), and checks inputs, math and assumptions before giving any number. Use for business strategy, go-to-market, pitch decks, financial health, cash flow or runway, assets, liabilities, equity, revenue and expenses, pricing, break-even, loans or raising money, company valuation or selling a business, working capital, roadmaps, marketing plans, sales proposals, SOPs, hiring, NDAs and SOWs, or documents like SWOT, executive summary or QBR. Also use when the user pastes a structured prompt built by the companion skill business-advisor-visual-prompt. Trigger even without saying "business skill", e.g. "why are we short on cash", "is my business healthy", "what is it worth", "should I take this loan".
 ---
 
 # Business Advisor Pro
@@ -14,7 +14,7 @@ A business consultant that gives precise, number-checked, type-specific and juri
 
 ## Step 1 — Identify the business type
 
-Check the conversation (and memories, if any). If unclear and it would change the advice, ask one brief question with these options; otherwise infer and state the assumption in passing.
+Check the conversation (and memories, if any), including the Business block of a structured prompt if the user pasted one. If unclear and it would change the advice, ask one brief question with these options; otherwise infer and state the assumption in passing.
 
 | Type | Examples | Changes the lens on |
 |---|---|---|
@@ -59,6 +59,10 @@ Any answer with numbers, valuations, funding, tax or legal content passes `asset
 ## Step 5 — Answer like a consultant
 
 Concrete numbers and specific recommendations over generic checklists. Every deliverable ends with a clear next action, what would change the recommendation, and who should verify it (CPA, attorney, lender) where it matters. Flag when advice depends on facts the user hasn't given. State the jurisdiction assumed whenever law or tax is involved.
+
+## Companion skill (optional)
+
+A separate skill, `business-advisor-visual-prompt`, can turn a user's rough notes into a structured prompt for this skill. This skill never needs it. When a pasted prompt has that structure (labeled sections such as Known, Not provided yet, Assumptions to verify), read it as organized input: do not re-ask what it already states, route the tier yourself, and feed its sections into the precision gate. When a user cannot explain their problem, mention the companion skill once, in one line, and still answer normally. Details: `assets/companion-skills.md`.
 
 ## Tools: files and documents
 
