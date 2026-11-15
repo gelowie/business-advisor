@@ -6,6 +6,7 @@ Version-by-version history of **Business Advisor**, newest first. Format based o
 
 | Version | Date | Summary |
 | :--- | :--- | :--- |
+| [4.0.1](#401---2026-11-15---companion-skill-awareness) | 2026-11-15 | Companion-skill awareness |
 | [4.0.0](#400---2026-11-07---business-advisor-pro) | 2026-11-07 | Business Advisor Pro |
 | [3.12.0](#3120---2026-10-12---decision-9-marked-as-superseded) | 2026-10-12 | Decision 9 marked as superseded |
 | [3.11.0](#3110---2026-10-11---handoff-reference-and-dependency-wording) | 2026-10-11 | Handoff reference and dependency wording |
@@ -28,6 +29,20 @@ Version-by-version history of **Business Advisor**, newest first. Format based o
 | [1.2.0](#120---2026-09-17---version-agnostic-tools-and-references) | 2026-09-17 | Version-agnostic tools and references |
 | [1.1.0](#110---2026-09-14---base-layer-and-tools) | 2026-09-14 | Base layer and tools |
 | [1.0.0](#100---2026-09-approx---first-release) | 2026-09 (approx.) | First release |
+
+---
+
+## [4.0.1] - 2026-11-15 - Companion-skill awareness
+
+### Added
+- `assets/companion-skills.md`: records that the optional `business-advisor-visual-prompt` skill exists. It explains how to recognize the structured prompts that skill builds, what each section means for this skill, why the prompt's template and target labels never decide the tier, how several prompts are handled, and when to mention the companion skill (once, lightly, never required).
+
+### Changed
+- `SKILL.md`: a short "Companion skill (optional)" section, a trigger clause in the description, and Step 1 also reads the Business block of a structured prompt.
+- `assets/routing.md`: "Information that travels with the request" notes that it may arrive already organized and that the prompt's labels are not routing decisions.
+- `assets/precision-gate.md`, section 1: states how *Known*, *Not provided yet* and *Assumptions to verify* sections are treated.
+- `README.md`: version badge and version note updated to 4.0.1, a feature bullet, a "Companion Skill (Optional)" section, a "What's new in 4.0.1" summary and the project-structure entry.
+- `RELEASE-HISTORY.md`: this entry and its row in the overview table.
 
 ---
 
