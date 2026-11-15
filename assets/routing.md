@@ -33,6 +33,8 @@ Order of questions: (1) does the topic exist on both sides or one? (2) if both, 
 
 **Information that travels with the request** (so the user never repeats themselves): their stated objective in their words; numbers, constraints and decisions already established; what has already been used and produced; open questions.
 
+This information may arrive already organized: a structured prompt from the optional companion skill `business-advisor-visual-prompt` carries it in labeled sections (*In my words*, *Known*, *Not provided yet* and so on). Read it as input, never as a routing decision: its *Template* and *Target* labels do not choose the tier. See `companion-skills.md`.
+
 ## Lookup table — every connection that exists
 
 | Domain | v1 template(s) | v2 methodology | Who answers |
